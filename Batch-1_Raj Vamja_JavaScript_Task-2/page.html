@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>JavaScript Task_2</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="./cdn.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="table.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+
+</head>
+
+<body id="back">
+
+    <!-- For main table -->
+    <form id="form" onsubmit="return show()">
+        <div class="container">
+
+            <button type="button" id="plus" onclick="addRow()" class="btn btn-outline-primary my-5">Add</button>
+
+            <div class="table-responsive">
+                <table id="tab" class="table">
+                    <tr id="hd">
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>Subject</th>
+                        <th>Mark</th>
+                        <th>Actions</th>
+                        <td></td>
+                    </tr>
+                    <tr class="bd">
+                        <td class="count"></td>
+                        <td><input type="text" class="name form-control border-0 bg-light" pattern="[A-Za-z\s]{3,15}"
+                                placeholder="Name" value="Harsh" required></td>
+                        <td><input type="text" class="sub form-control border-0 bg-light" pattern="[A-Za-z\s]{3,30}"
+                                placeholder="Sub" value="Mathematics" required></td>
+                        <td><strong><input type="number" class="mark form-control border-0 bg-light" min="1" max="100"
+                                    placeholder="Marks" value="88" required></strong></td>
+                        <td class="d-flex"> <button type="button" onclick=""
+                                class="btn btn-outline-success">Approve</button>
+                            <button type="button" onclick="" class="btn btn-outline-danger ms-1">Reject</button>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr class="bd">
+                        <td class="count"></td>
+                        <td><input type="text" class="name form-control border-0 bg-light" pattern="[A-Za-z\s]{3,15}"
+                                placeholder="Name" value="Anand" required></td>
+                        <td><input type="text" class="sub form-control border-0 bg-light" pattern="[A-Za-z\s]{3,30}"
+                                placeholder="Sub" value="Physics" required></td>
+                        <td><strong><input type="number" class="mark form-control border-0 bg-light" min="1" max="100"
+                                    placeholder="Marks" value="72" required></strong></td>
+                        <td class="d-flex"><button type="button" onclick=""
+                                class="btn btn-outline-success">Approve</button>
+                            <button type="button" onclick="" class="btn btn-outline-danger ms-1">Reject</button>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr class="bd">
+                        <td class="count"></td>
+                        <td><input type="text" class="name form-control border-0 bg-light" pattern="[A-Za-z\s]{3,15}"
+                                placeholder="Name" value="Karan" required></td>
+                        <td><input type="text" class="sub form-control border-0 bg-light" pattern="[A-Za-z\s]{3,30}"
+                                placeholder="Sub" value="Basic Electronics" required></td>
+                        <td><strong><input type="number" class="mark form-control border-0 bg-light" min="1" max="100"
+                                    placeholder="Marks" value="79" required></strong></td>
+                        <td class="d-flex"><button type="button" onclick=""
+                                class="btn btn-outline-success">Approve</button>
+                            <button type="button" onclick="" class="btn btn-outline-danger ms-1">Reject</button>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr class="bd">
+                        <td class="count"></td>
+                        <td><input type="text" class="name form-control border-0 bg-light" pattern="[A-Za-z\s]{3,15}"
+                                placeholder="Name" value="Raj" required></td>
+                        <td><input type="text" class="sub form-control border-0 bg-light" pattern="[A-Za-z\s]{3,30}"
+                                placeholder="Sub" value="Computer Network" required></td>
+                        <td><strong><input type="number" class="mark form-control border-0 bg-light" min="1" max="100"
+                                    placeholder="Marks" value="89" required></strong></td>
+                        <td class="d-flex"><button type="button" onclick=""
+                                class="btn btn-outline-success">Approve</button>
+                            <button type="button" onclick="" class="btn btn-outline-danger ms-1">Reject</button>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr class="bd">
+                        <td class="count"></td>
+                        <td><input type="text" class="name form-control border-0 bg-light" pattern="[A-Za-z\s]{3,15}"
+                                placeholder="Name" value="Divyam" required></td>
+                        <td><input type="text" class="sub form-control border-0 bg-light" pattern="[A-Za-z\s]{3,30}"
+                                placeholder="Sub" value="Basic Mech" required></td>
+                        <td><strong><input type="number" class="mark form-control border-0 bg-light" min="1" max="100"
+                                    placeholder="Marks" value="70" required></strong></td>
+                        <td class="d-flex"><button type="button" onclick=""
+                                class="btn btn-outline-success">Approve</button>
+                            <button type="button" onclick="" class="btn btn-outline-danger ms-1">Reject</button>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- For submit button -->
+        <div class="container">
+            <button type="submit" id="load" class="btn btn-success my-4">Load</button>
+        </div>
+    </form>
+
+    <!-- For sorting and searchbar -->
+    <div class="container d-flex justify-content-between">
+        <div class="d-flex">
+            <button type="button" onclick="sort_N()" id="btn1" class="btn btn-outline-secondary">Sort By Name</button>
+            <button type="button" onclick="sort_S()" id="btn2" class="btn btn-outline-secondary ms-2">Sort By
+                Subject</button>
+        </div>
+        <div class="search w-25">
+            <i class="fa fa-search"></i>
+            <input type="text" id="find" class="form-control" onkeyup="mySearch()" placeholder="Search...">
+            <!-- <button onclick="myFunction()" class="btn btn-primary">Search</button> -->
+        </div>
+    </div>
+
+    <!-- For display table -->
+    <div class="container">
+        <div class="table-responsive">
+            <table id="dis" class="obd table my-3">
+            </table>
+        </div>
+    </div>
+
+    <script src="./popper.js"></script>
+    <script src="./bootstrap.js"></script>
+
+</body>
+
+</html>
