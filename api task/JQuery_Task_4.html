@@ -1,0 +1,75 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="JQuery_Task_4.css">
+    <link rel="stylesheet" href="jquery.dataTables.min.css">
+    <script src="jquery-3.5.1.js"></script>
+    <script src="jquery.dataTables.min.js"></script>
+    <!-- <script src="jquery-3.6.3.js"></script> -->
+    <script src="JQuery_Task_4.js"></script>
+    <title>JQuery_Task_4</title>
+</head>
+
+<body>
+    <button class="trigger">model</button>
+    <table >
+        <thead >
+            <th></th>
+            <th>id</th>
+            <th>firstName</th>
+            <th>lastName</th>
+            <th>DOB</th>
+            <th>contactNo</th>
+            <th>emailId</th>
+            <th>address</th>
+            <th></th>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <div class="new modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span> 
+            <form id="form">
+                <label for="firstname">First name: </label>
+                <input type="text" name="firstname" class="fname" required>
+                <br>
+                <label for="lastname">Last name: </label>
+                <input type="text" name="lastname" class="lname" required>
+                <br>
+                <label for="email">email: </label>
+                <input type="email" name="email" class="email" required>
+                <br>
+                <label for="password">password: </label>
+                <input type="password" name="password" class="pass" required>
+                <br>
+            </form>
+            <button class="submit"  value="save" >submit</button>
+        </div>
+    </div>
+
+    <div class="new modal1">
+        <div class="modal-content1">
+            <span class="close-button1">&times;</span> 
+            <form id="form1">
+                <label for="firstname1">First name: </label>
+                <input type="text" name="firstname" class="fname1" required>
+                <br>
+                <label for="lastname">Last name: </label>
+                <input type="text" name="lastname" class="lname1" required>
+                <br>
+                <label for="email">email: </label>
+                <input type="email" name="email" class="email1" required>
+                <br>
+                <label for="password">password: </label>
+                <input type="password" name="password" class="pass1" required>
+                <br>
+            </form>
+            <button class="submit1"  value="save" >submit</button>
+        </div>
+    </div>
+</body>
+
+</html>

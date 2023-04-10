@@ -1,0 +1,174 @@
+body {
+    background-color: #e0f8d4;
+    max-width: 80%;
+    margin: auto;
+}
+
+td.details-control {
+    background: url('http://datatables.net/examples/resources/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('http://datatables.net/examples/resources/details_close.png') no-repeat center center;
+}
+
+.fixed {
+    position: sticky;
+    width: 100%;
+    top: 0;
+    margin: 0;
+}
+
+table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+tr:hover {
+    background-color: #EEF0F7 !important;
+}
+
+table tr {
+    background-color: #f8f8f8 !important;
+    border: 1px solid #ddd;
+    padding: .35em;
+}
+
+th,
+td {
+    padding: .625em;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+    table {
+        border: 0;
+    }
+
+    table caption {
+        font-size: 1.3em;
+    }
+
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
+    }
+
+    table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        overflow-wrap: break-word;
+        font-size: .8em;
+        text-align: right;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table td:nth-of-type(1):before {
+        padding-top: 7px;
+        content: "API";
+    }
+
+    table td:nth-of-type(2):before {
+        /* padding-top: 7px; */
+        content: "Description";
+    }
+
+    table td:nth-of-type(3):before {
+        content: "Auth";
+    }
+
+    table td:nth-of-type(4):before {
+        padding-top: 7px;
+        content: "Cors";
+    }
+
+    table td:nth-of-type(5):before {
+        padding-top: 7px;
+        content: "Link";
+    }
+
+    table td:nth-of-type(6):before {
+        padding-top: 7px;
+        content: "Category";
+    }
+}
+
+.modal, 
+.modal1 {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal-content, 
+.modal-content1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    border-radius: 0.5rem;
+}
+
+.close-button,
+.close-button1 {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+
+.close-button:hover,
+.close-button1:hover {
+    background-color: darkgray;
+}
+
+.show-modal,
+.show-modal1 {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
