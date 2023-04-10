@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="./cdn.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body id="back">
+
+    <div class="container mt-4 text-center"><button onclick="refresh()" class="btn btn-outline-success"><img
+                src="refresh.png" style="height: 20px; width: 20px;"></button>
+    </div>
+    <div class="container">
+        <div class="mt-4 d-flex justify-content-center">
+            <input type="text" id="add()" class="form-control border-0 bg-light w-25" placeholder="textBox">
+            <button type="button" id="add" onclick="addBox()" class="btn btn-outline-primary ms-2"> Add </button>
+        </div>
+    </div>
+
+    <script>
+        var count = 0;
+
+        function addBox() {
+            if (count < 09) {
+                var x = document.createElement("div");
+                x.innerHTML = `<div id="refresh" class="con container mt-4 d-flex justify-content-center">
+                               <input type="text" class="form-control border-0 bg-light w-25" placeholder="textBox">
+                               <button type="button"  onclick="removeBox(this)" class="btn btn-outline-danger ms-2">Rem</button> </div> `
+                document.body.appendChild(x);
+                count++
+            }
+            else {
+                document.getElementById("add").disabled = true
+                alert("You already reached your limits for adding the textBox !!!")
+            }
+        }
+
+        function removeBox(del) {
+
+            if (count <= 09) {
+                document.getElementById("add").disabled = false
+            }
+            del.parentNode.parentNode.remove();
+            count--
+        }
+    </script>
+    <script src="./popper.js"></script>
+    <script src="./bootstrap.js"></script>
+
+</body>
+
+</html>
