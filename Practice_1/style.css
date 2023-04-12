@@ -1,0 +1,12 @@
+body {
+    background-image: url(image.jpg);
+}
+
+label.error {
+    color: red !important;
+    font-weight: normal !important;
+}
+
+#form input.error {
+    border: 1px solid red;
+}
