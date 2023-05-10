@@ -1,0 +1,130 @@
+﻿@model studentRegistration.Models.student
+
+@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+
+<section class="home-section">
+    <nav>
+        <div class="sidebar-button">
+            <i class='bx bx-menu sidebarBtn'></i>
+            <span class="dashboard">Dashboard</span>
+        </div>
+        <span class="admin_name" style="color: black">Welcome back @Session["Name"]</span>
+
+
+    </nav>
+
+
+
+    <div class="home-content">
+        <div class="sales-boxes">
+            <div class="recent-sales box" style="background-color: #0a25584a">
+                <div class="title">Details for student Id: @Model.stdId</div>
+                <div class="sales-details">
+
+                    <div class="container">
+
+
+                        <table id="dis" class="obd table mt-4">
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.fName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.fName)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.lName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.lName)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.DOB)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.DOB)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.sPhone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.sPhone)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.sEmail)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.sEmail)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Gender)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Gender)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.sAddress)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.sAddress)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.City1.cityName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.City1.cityName)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.State1.sName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.State1.sName)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Country1.cName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Country1.cName)
+                                </td>
+                            </tr>
+
+
+                        </table>
+
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <button type="button" style="background-color: #dfaf69 " class="btn mx-2"><a style="text-decoration: none; color: black" href="@Url.Action("Edit", "student", new {  id=Model.stdId})">Edit</a></button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>

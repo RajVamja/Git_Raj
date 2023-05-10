@@ -1,0 +1,48 @@
+﻿@model studentRegistration.Models.dropDown
+
+@{
+    Layout = "~/Views/Shared/Credentials.cshtml";
+}
+
+<div class="container">
+
+    @if (ViewBag.CountryList != null)
+    {
+        @Html.DropDownListFor(a => a.cId, ViewBag.CountryList as SelectList, "Please Select Country", new { @class = "form-control" });
+    }
+    @Html.DropDownListFor(a => a.sId, new SelectList(""), "Please Select State", new { @class = "form-control" });
+    @Html.DropDownListFor(a => a.cityId, new SelectList(""), "Please Select City", new { @class = "form-control" });
+
+</div>
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#cId").change(function () {
+            var countryId = $(this).val();
+            $.ajax({
+                type: "post",
+                url: "/countries/GetStateList?cId=" + countryId,
+                contentType: "html",
+                success: function (response) {
+                    $("#sId").empty();
+                    $("#sId").append(response);
+                }
+            })
+        })
+
+        $("#sId").change(function () {
+            var stateId = $(this).val();
+            $.ajax({
+                type: "post",
+                url: "/countries/GetCityList?sId=" + stateId,
+                contentType: "html",
+                success: function (res) {
+                    $("#cityId").empty();
+                    $("#cityId").append(res);
+                }
+            })
+        })
+    })
+</script>

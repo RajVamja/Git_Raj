@@ -1,0 +1,39 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+
+.input-field input[type=date]:focus + label,
+.input-field input[type=text]:focus + label,
+.input-field input[type=email]:focus + label,
+.input-field input[type=number]:focus + label,
+.input-field input[type=radio]:focus + label,
+.input-field input[type=password]:focus + label {
+    color: #3F51B5;
+}
+
+.input-field input[type=date]:focus,
+.input-field input[type=text]:focus,
+.input-field input[type=email]:focus,
+.input-field input[type=number]:focus,
+.input-field input[type=radio]:focus,
+.input-field input[type=password]:focus {
+    border-bottom: 2px solid #3F51B5;
+    box-shadow: none;
+}
+
+.z-depth-1.grey.lighten-4.row {
+    /* max-width: 600px;*/
+}
+
+.grey.lighten-4 {
+    background-color: #ffffff !important;
+    border-radius: 5px;
+}
+

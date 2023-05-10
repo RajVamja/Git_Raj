@@ -1,0 +1,63 @@
+﻿@model studentRegistration.Models.Country
+
+@{
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+
+
+<section class="home-section">
+    <nav>
+        <div class="sidebar-button">
+            <i class='bx bx-menu sidebarBtn'></i>
+            <span class="dashboard">Dashboard</span>
+        </div>
+        <span class="admin_name me-5" style="color: black">Welcome back @Session["Name"]</span>
+    </nav>
+
+    <div class="home-content">
+        <div class="sales-boxes">
+            <div class="recent-sales box">
+                <div class="title">Edit Country</div>
+                <div class="sales-details">
+
+                    <div class="container">
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                        <div class="">
+                            <div class="d-flex justify-content-center">
+                                <img src="~/Content/3d-casual-life-map.png" />
+                            </div>
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.cId)
+
+                            <div class="form-group d-flex justify-content-center">
+                                <div class="col-md-12 mt-5 mx-3">
+                                    Type country name here
+                                    @Html.EditorFor(model => model.cName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.cName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10 mx-3">
+                                    <input type="submit" style="background-color: #dfaf69; color: white " value="Create" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</section>

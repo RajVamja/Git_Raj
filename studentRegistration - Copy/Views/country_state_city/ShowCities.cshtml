@@ -1,0 +1,107 @@
+﻿@model IEnumerable<studentRegistration.Models.City>
+
+@{
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.cityName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State.sName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country.cName)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.cityName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State.sName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country.cName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.cityId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.cityId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.cityId })
+            </td>
+        </tr>
+    }
+
+    </table>*@
+
+
+<section class="home-section">
+    <nav>
+        <div class="sidebar-button">
+            <i class='bx bx-menu sidebarBtn'></i>
+            <span class="dashboard">Dashboard</span>
+        </div>
+        <span class="admin_name me-5" style="color: black">Welcome back @Session["Name"]</span>
+    </nav>
+
+    <div class="home-content">
+        <div class="sales-boxes">
+            <div class="recent-sales box">
+                <div class="title">City Details</div>
+                <div class="sales-details">
+
+                    <div class="container">
+                        <div class="table-responsive">
+                            <div class="container table-responsive">
+                                <table id="dis" class="obd table mb-5">
+                                    <thead>
+                                        <tr id="hd">
+                                            <th>City</th>
+                                            <th>State</th>
+                                            <th>Country</th>
+                                            <th style="text-align: right">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.cityName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.State.sName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Country.cName)
+                                                </td>
+
+                                                <td>
+                                                    <div class="d-flex" style="float: right">
+                                                        <button type="button" class="btn btn-success mx-2"><a style="text-decoration: none; color: white" href="@Url.Action("EditCity", "country_state_city", new {  cityId=item.cityId })">Edit</a></button> |
+                                                        <button type="button" class="btn btn-warning mx-2"><a style="text-decoration: none; color: white" href="@Url.Action("Details", "student", new {  id=item.cityId })">Details</a></button> |
+                                                        <button type="button" class="btn btn-danger ms-2"><a style="text-decoration: none; color: white" href="@Url.Action("DeleteCity", "country_state_city", new {  cityId=item.cityId })">Delete</a></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" style="background-color: #dfaf69" class="btn ms-2"><a style="text-decoration: none; color: white" href="@Url.Action("AddCity", "country_state_city")">Add City</a></button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

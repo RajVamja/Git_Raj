@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="db_RajVamjaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="cityId" />
+          </Key>
+          <Property Name="cityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cityName" Type="varchar" MaxLength="50" />
+          <Property Name="sId" Type="int" Nullable="false" />
+          <Property Name="cId" Type="int" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="cId" />
+          </Key>
+          <Property Name="cId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="States">
+          <Key>
+            <PropertyRef Name="sId" />
+          </Key>
+          <Property Name="sId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sName" Type="varchar" MaxLength="50" />
+          <Property Name="cId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="students">
+          <Key>
+            <PropertyRef Name="stdId" />
+          </Key>
+          <Property Name="stdId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="sPhone" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="sEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="sAddress" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="city" Type="int" Nullable="false" />
+          <Property Name="state" Type="int" Nullable="false" />
+          <Property Name="country" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="uId" />
+          </Key>
+          <Property Name="uId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fName" Type="varchar" MaxLength="100" />
+          <Property Name="lName" Type="varchar" MaxLength="100" />
+          <Property Name="userName" Type="varchar" MaxLength="50" />
+          <Property Name="passWord" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__Cities__sId__47DBAE45">
+          <End Role="States" Type="Self.States" Multiplicity="1" />
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="sId" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="sId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__States__cId__46E78A0C">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="States" Type="Self.States" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="cId" />
+            </Principal>
+            <Dependent Role="States">
+              <PropertyRef Name="cId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__students__city__4E88ABD4">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+          <End Role="students" Type="Self.students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="cityId" />
+            </Principal>
+            <Dependent Role="students">
+              <PropertyRef Name="city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__students__countr__5070F446">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="students" Type="Self.students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="cId" />
+            </Principal>
+            <Dependent Role="students">
+              <PropertyRef Name="country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__students__state__4F7CD00D">
+          <End Role="States" Type="Self.States" Multiplicity="1" />
+          <End Role="students" Type="Self.students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="sId" />
+            </Principal>
+            <Dependent Role="students">
+              <PropertyRef Name="state" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cities_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="cId" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="cId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_city" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_country" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_DeleteCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cityId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_DeleteCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="countryId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_DeleteState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="stateId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_DiplayStudentDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_state" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="db_RajVamjaModelStoreContainer">
+          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cities__sId__47DBAE45" Association="Self.FK__Cities__sId__47DBAE45">
+            <End Role="States" EntitySet="States" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK__States__cId__46E78A0C" Association="Self.FK__States__cId__46E78A0C">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="States" EntitySet="States" />
+          </AssociationSet>
+          <AssociationSet Name="FK__students__city__4E88ABD4" Association="Self.FK__students__city__4E88ABD4">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="students" EntitySet="students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__students__countr__5070F446" Association="Self.FK__students__countr__5070F446">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="students" EntitySet="students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__students__state__4F7CD00D" Association="Self.FK__students__state__4F7CD00D">
+            <End Role="States" EntitySet="States" />
+            <End Role="students" EntitySet="students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cities_Countries" Association="Self.FK_Cities_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_RajVamjaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="db_RajVamjaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Users" EntityType="db_RajVamjaModel.User" />
+          <EntitySet Name="Cities" EntityType="db_RajVamjaModel.City" />
+          <EntitySet Name="Countries" EntityType="db_RajVamjaModel.Country" />
+          <EntitySet Name="States" EntityType="db_RajVamjaModel.State" />
+          <AssociationSet Name="FK__Cities__sId__47DBAE45" Association="db_RajVamjaModel.FK__Cities__sId__47DBAE45">
+            <End Role="State" EntitySet="States" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK__States__cId__46E78A0C" Association="db_RajVamjaModel.FK__States__cId__46E78A0C">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="State" EntitySet="States" />
+          </AssociationSet>
+          <EntitySet Name="students" EntityType="db_RajVamjaModel.student" />
+          <AssociationSet Name="FK__students__city__4E88ABD4" Association="db_RajVamjaModel.FK__students__city__4E88ABD4">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="student" EntitySet="students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__students__countr__5070F446" Association="db_RajVamjaModel.FK__students__countr__5070F446">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="student" EntitySet="students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__students__state__4F7CD00D" Association="db_RajVamjaModel.FK__students__state__4F7CD00D">
+            <End Role="State" EntitySet="States" />
+            <End Role="student" EntitySet="students" />
+          </AssociationSet>
+          <FunctionImport Name="SP_city" ReturnType="Collection(String)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_country" ReturnType="Collection(String)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_state" ReturnType="Collection(String)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_DiplayStudentDetails" ReturnType="Collection(db_RajVamjaModel.SP_DiplayStudentDetails_Result1)" />
+          <AssociationSet Name="FK_Cities_Countries" Association="db_RajVamjaModel.FK_Cities_Countries">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <FunctionImport Name="sp_DeleteCity">
+          <Parameter Name="cityId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DeleteCountry">
+          <Parameter Name="countryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DeleteState">
+          <Parameter Name="stateId" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="uId" />
+          </Key>
+          <Property Name="uId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="lName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="passWord" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="cityId" />
+          </Key>
+          <Property Name="cityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="State" Relationship="db_RajVamjaModel.FK__Cities__sId__47DBAE45" FromRole="City" ToRole="State" />
+          <NavigationProperty Name="students" Relationship="db_RajVamjaModel.FK__students__city__4E88ABD4" FromRole="City" ToRole="student" />
+          <Property Name="cId" Type="Int32" />
+          <NavigationProperty Name="Country" Relationship="db_RajVamjaModel.FK_Cities_Countries" FromRole="City" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="cId" />
+          </Key>
+          <Property Name="cId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="States" Relationship="db_RajVamjaModel.FK__States__cId__46E78A0C" FromRole="Country" ToRole="State" />
+          <NavigationProperty Name="students" Relationship="db_RajVamjaModel.FK__students__countr__5070F446" FromRole="Country" ToRole="student" />
+          <NavigationProperty Name="Cities" Relationship="db_RajVamjaModel.FK_Cities_Countries" FromRole="Country" ToRole="City" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="sId" />
+          </Key>
+          <Property Name="sId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cities" Relationship="db_RajVamjaModel.FK__Cities__sId__47DBAE45" FromRole="State" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="db_RajVamjaModel.FK__States__cId__46E78A0C" FromRole="State" ToRole="Country" />
+          <NavigationProperty Name="students" Relationship="db_RajVamjaModel.FK__students__state__4F7CD00D" FromRole="State" ToRole="student" />
+        </EntityType>
+        <Association Name="FK__Cities__sId__47DBAE45">
+          <End Type="db_RajVamjaModel.State" Role="State" Multiplicity="1" />
+          <End Type="db_RajVamjaModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="sId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="sId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__States__cId__46E78A0C">
+          <End Type="db_RajVamjaModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="db_RajVamjaModel.State" Role="State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="cId" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="cId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="stdId" />
+          </Key>
+          <Property Name="stdId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="sPhone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="sEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="sAddress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="Int32" Nullable="false" />
+          <Property Name="state" Type="Int32" Nullable="false" />
+          <Property Name="country" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="City1" Relationship="db_RajVamjaModel.FK__students__city__4E88ABD4" FromRole="student" ToRole="City" />
+          <NavigationProperty Name="Country1" Relationship="db_RajVamjaModel.FK__students__countr__5070F446" FromRole="student" ToRole="Country" />
+          <NavigationProperty Name="State1" Relationship="db_RajVamjaModel.FK__students__state__4F7CD00D" FromRole="student" ToRole="State" />
+        </EntityType>
+        <Association Name="FK__students__city__4E88ABD4">
+          <End Type="db_RajVamjaModel.City" Role="City" Multiplicity="1" />
+          <End Type="db_RajVamjaModel.student" Role="student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="cityId" />
+            </Principal>
+            <Dependent Role="student">
+              <PropertyRef Name="city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__students__countr__5070F446">
+          <End Type="db_RajVamjaModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="db_RajVamjaModel.student" Role="student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="cId" />
+            </Principal>
+            <Dependent Role="student">
+              <PropertyRef Name="country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__students__state__4F7CD00D">
+          <End Type="db_RajVamjaModel.State" Role="State" Multiplicity="1" />
+          <End Type="db_RajVamjaModel.student" Role="student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="sId" />
+            </Principal>
+            <Dependent Role="student">
+              <PropertyRef Name="state" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="SP_DiplayStudentDetails_Result">
+          <Property Type="Int32" Name="stdId" Nullable="false" />
+          <Property Type="String" Name="fName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="lName" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DOB" Nullable="false" />
+          <Property Type="String" Name="sPhone" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="sEmail" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="sAddress" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="CityName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="StateName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CountryName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_DiplayStudentDetails_Result1">
+          <Property Type="Int32" Name="stdId" Nullable="false" />
+          <Property Type="String" Name="fName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="lName" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="DOB" Nullable="false" />
+          <Property Type="String" Name="sPhone" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="sEmail" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="sAddress" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="cityName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="sName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="cName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <Association Name="FK_Cities_Countries">
+          <End Type="db_RajVamjaModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="db_RajVamjaModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="cId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="cId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db_RajVamjaModelStoreContainer" CdmEntityContainer="db_RajVamjaEntities">
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="db_RajVamjaModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="passWord" ColumnName="passWord" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="lName" ColumnName="lName" />
+                <ScalarProperty Name="fName" ColumnName="fName" />
+                <ScalarProperty Name="uId" ColumnName="uId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="db_RajVamjaModel.City">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="cId" ColumnName="cId" />
+                <ScalarProperty Name="sId" ColumnName="sId" />
+                <ScalarProperty Name="cityName" ColumnName="cityName" />
+                <ScalarProperty Name="cityId" ColumnName="cityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="db_RajVamjaModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="cName" ColumnName="cName" />
+                <ScalarProperty Name="cId" ColumnName="cId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="db_RajVamjaModel.State">
+              <MappingFragment StoreEntitySet="States">
+                <ScalarProperty Name="cId" ColumnName="cId" />
+                <ScalarProperty Name="sName" ColumnName="sName" />
+                <ScalarProperty Name="sId" ColumnName="sId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="students">
+            <EntityTypeMapping TypeName="db_RajVamjaModel.student">
+              <MappingFragment StoreEntitySet="students">
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="sAddress" ColumnName="sAddress" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="sEmail" ColumnName="sEmail" />
+                <ScalarProperty Name="sPhone" ColumnName="sPhone" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="lName" ColumnName="lName" />
+                <ScalarProperty Name="fName" ColumnName="fName" />
+                <ScalarProperty Name="stdId" ColumnName="stdId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_city" FunctionName="db_RajVamjaModel.Store.SP_city" />
+          <FunctionImportMapping FunctionImportName="SP_country" FunctionName="db_RajVamjaModel.Store.SP_country" />
+          <FunctionImportMapping FunctionImportName="SP_state" FunctionName="db_RajVamjaModel.Store.SP_state" />
+          <FunctionImportMapping FunctionImportName="SP_DiplayStudentDetails" FunctionName="db_RajVamjaModel.Store.SP_DiplayStudentDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="db_RajVamjaModel.SP_DiplayStudentDetails_Result1">
+                <ScalarProperty Name="stdId" ColumnName="stdId" />
+                <ScalarProperty Name="fName" ColumnName="fName" />
+                <ScalarProperty Name="lName" ColumnName="lName" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="sPhone" ColumnName="sPhone" />
+                <ScalarProperty Name="sEmail" ColumnName="sEmail" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="sAddress" ColumnName="sAddress" />
+                <ScalarProperty Name="cityName" ColumnName="cityName" />
+                <ScalarProperty Name="sName" ColumnName="sName" />
+                <ScalarProperty Name="cName" ColumnName="cName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_DeleteCity" FunctionName="db_RajVamjaModel.Store.sp_DeleteCity" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteCountry" FunctionName="db_RajVamjaModel.Store.sp_DeleteCountry" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteState" FunctionName="db_RajVamjaModel.Store.sp_DeleteState" />
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

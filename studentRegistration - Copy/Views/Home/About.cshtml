@@ -1,0 +1,260 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+
+
+
+
+@*create database db_RajVamja
+
+
+use db_RajVamja
+
+create table Employees(
+	Emp_Id int primary key,
+	Name varchar(50),
+	Department varchar(50)
+);
+
+create table EmployeeDetails(
+	Emp_Id int foreign key references Employees(Emp_Id) not null,
+	Emp_dId int primary key,
+	Contact varchar(50),
+	Email varchar(100),
+	BithDate date,
+	Salary float,
+	JoiningDate date,
+	JobLocation varchar(25),
+	Emp_Address varchar(100)
+);
+
+
+select * from Employees
+select * from EmployeeDetails
+
+
+create table Users(
+	uId int identity(1,1) primary key,
+	fName varchar(100),
+	lName varchar(100),
+	userName varchar(50),
+	passWord varchar(100)
+);
+
+
+select * from Users
+
+create table Countries(
+	cId int primary key identity(1,1),
+	cName varchar(50)
+);
+
+create table States(
+	sId int primary key identity(1,1),
+	sName varchar(50),
+	cId int not null
+);
+
+create table Cities(
+	cityId int primary key identity(1,1),
+	cityName varchar(50),
+	sId int not null
+);
+
+insert into Countries
+values('india'),
+	  ('Canada'),
+	  ('USA')
+
+insert into States
+values('Gujarat', 1),
+	  ('Maharastra', 1),
+	  ('Karnataka', 1),
+	  ('Alberta', 2),
+	  ('Manitoba', 2),
+	  ('Ontario', 2),
+	  ('Alaska', 3),
+	  ('California', 3),
+	  ('Hawaii', 3)
+
+	  alter table States
+	  add foreign key (cId) references Countries(cId)
+
+	  alter table Cities
+	  add foreign key (sId) references States(sId)
+
+insert into Cities
+values ('Surat', 1),
+	   ('Ahmedabad', 1),
+	   ('Baroda', 1),
+	   ('Rajkot', 1),
+	   ('Mumbai', 2),
+	   ('Pune', 2),
+	   ('Nagpur', 2),
+	   ('Nashik', 2),
+	   ('Bangaluru', 3),
+	   ('Bhadravati', 3),
+	   ('Gulbarga', 3),
+	   ('Mysore', 3),
+	   ('Calgary',4),
+	   ('Edmonton',4),
+	   ('St. Albert',4),
+	   ('Winnipeg', 5),
+	   ('The Pas', 5),
+	   ('Brandon', 5),
+	   ('Ottawa', 6),
+	   ('Hamilton', 6),
+	   ('Toronto', 6),
+	   ('Skagway', 7),
+	   ('Talkeenta', 7),
+	   ('Homer', 7),
+	   ('Los Angeles',8),
+	   ('San Francisco',8),
+	   ('Oakland',8),
+	   ('San Diego',8),
+	   ('Pearl City', 9),
+	   ('Ocean Pointe', 9),
+	   ('Makawao', 9),
+	   ('Maili', 9)
+
+create table students(
+	stdId int primary key identity(1,1),
+	fName varchar(50) not null,
+	lName varchar(50) not null,
+	DOB date not null,
+	sPhone varchar(20) not null,
+	sEmail varchar(50) not null,
+	Gender varchar(10) not null,
+	sAddress varchar(255) not null,
+	city int foreign key references Cities(cityId) not null,
+	state int foreign key references States(sId) not null,
+	country int foreign key references Countries(cId) not null
+);
+
+select * from students
+
+delete from students where stdId = 6
+
+
+create proc SP_country (@id int)
+as
+begin
+	select Countries.cId ,Countries.cName from Countries inner join students on Countries.cId = students.country where Countries.cId = 2
+
+SELECT Countries.cId, Countries.cName
+FROM Countries
+INNER JOIN students
+ON Countries.cId = students.country
+WHERE Countries.cId = 3;
+
+	where cId = @id
+    end;
+
+    exec SP_country 1
+
+
+
+
+
+
+
+    create proc SP_country (@id int)
+    as
+    begin
+    select cName from Countries where cId = @id
+    end;
+
+    exec SP_country 3
+
+
+    create proc SP_state (@id int)
+    as
+    begin
+    select sName from States where sId = @id
+    end;
+
+    exec SP_state 5
+
+
+    create proc SP_city (@id int)
+    as
+    begin
+    select cityName from Cities where cityId = @id
+    end;
+
+    exec SP_city 32
+
+
+    CREATE PROCEDURE SP_DiplayStudentDetails
+    AS
+    BEGIN
+    SELECT stdId, fName, lName, DOB, sPhone, sEmail, Gender, sAddress,
+    c.cityName , s.sName, co.cName
+    FROM students AS std
+    INNER JOIN Cities AS c ON c.cityId = std.city
+    INNER JOIN States AS s ON s.sId = std.state
+    INNER JOIN Countries AS co ON co.cId = std.country
+    END
+
+    exec SP_DiplayStudentDetails
+
+    select * from Users
+
+
+
+    ALTER TABLE Cities
+    ADD cId int;
+
+    ALTER TABLE Cities
+    ADD CONSTRAINT FK_Cities_Countries FOREIGN KEY (cId) REFERENCES Countries(cId);
+
+
+    select * from Cities
+    select * from Countries
+    select * from States
+
+    begin tran
+    update Cities set cId = 3 where sId in (7, 8, 9)
+    rollback tran
+    commit tran
+
+
+    ------------------------------------------------ store procedures for delete country, state ans city ------------------------------------------------------
+    CREATE or ALTER PROC sp_DeleteCity(@cityId int)
+    AS
+    BEGIN
+    if not exists (select * from students where city = @cityId)
+    begin
+    DELETE FROM Cities WHERE cityId = @cityId
+    end
+    END
+
+
+    CREATE or ALTER PROC sp_DeleteState(@stateId int)
+    AS
+    BEGIN
+    if not exists (select * from students where state = @stateId)
+
+    DELETE FROM Cities WHERE sId = @stateId
+    DELETE FROM States WHERE sId = @stateId
+
+    END
+
+
+    CREATE or ALTER PROCEDURE sp_DeleteCountry( @countryId int)
+    AS
+    BEGIN
+    if not exists (select * from students where country = @countryId)
+
+    DELETE FROM Cities WHERE sId IN (SELECT sId FROM States WHERE cId = @countryId)
+    DELETE FROM States WHERE cId = @countryId
+    DELETE FROM Countries WHERE cId = @countryId
+
+
+    END
+
+    select * from States*@

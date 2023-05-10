@@ -1,0 +1,135 @@
+﻿@model studentRegistration.Models.City
+
+@{
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+<section class="home-section">
+    <nav>
+        <div class="sidebar-button">
+            <i class='bx bx-menu sidebarBtn'></i>
+            <span class="dashboard">Dashboard</span>
+        </div>
+        <span class="admin_name me-5" style="color: black">Welcome back @Session["Name"]</span>
+    </nav>
+
+    <div class="home-content">
+        <div class="sales-boxes">
+            <div class="recent-sales box">
+                <div class="title">Add City</div>
+                <div class="sales-details">
+
+                    <div class="container">
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="">
+                                <div class="d-flex justify-content-center">
+                                    <img src="~/Content/casual-life-3d-boy-looking-at-the-globe-through-magnifying-glass.png" />
+                                </div>        
+                                
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <div class="form-group d-flex justify-content-center">
+                                    <div class="col-md-12 mt-5 mx-3">
+                                        @Html.DropDownListFor(a => a.cId, ViewBag.CountryList as SelectList, "Select Country", new { @class = "form-control", @id = "cId" })
+                                        @Html.ValidationMessageFor(model => model.cId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group d-flex justify-content-center">
+                                    <div class="col-md-12 mt-4 mx-3">
+                                        @Html.DropDownListFor(a => a.sId, new SelectList(""), "Select State", new { @class = "form-control", @id = "sId" })
+                                        @Html.ValidationMessageFor(model => model.sId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group d-flex justify-content-center">
+                                    <div class="col-md-12 mt-4 mx-3">
+                                        Add City Name Here
+                                        @Html.EditorFor(model => model.cityName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.cityName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group d-flex justify-content-center">
+                                    <div class="col-md-12 mx-3">
+                                        <input type="submit" style="background-color: #dfaf69; color: white " value="Create" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <button type="button" style="background-color: #0A2558 " class="btn mx-2"><a style="text-decoration: none; color: white" href="@Url.Action("ShowCities", "country_state_city")">Go to List</a></button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#cId").change(function () {
+            var countryId = $(this).val();
+            $.ajax({
+                type: "post",
+                url: "/countries/GetStateList?cId=" + countryId,
+                contentType: "html",
+                success: function (response) {
+                    $("#sId").empty();
+                    $("#sId").append(response);
+                }
+            })
+        })
+
+
+        $("#CountryId").change(function () {
+            var countryId = $(this).val();
+            debugger
+            $.ajax({
+                method: 'GET',
+                url: "/Student/GetStateByCountryId/" + countryId,
+                success: function (response) {
+                    $("#StateId").empty();
+                    $("#CityId").empty();
+                    $("#StateId").html("<option value='-1'> -- Select State -- </option>");
+                    $("#CityId").html("<option value='-1'> -- Select City -- </option>");
+                    var data = JSON.parse(response);
+                    data.forEach(ele => {
+                        console.log(ele);
+                        $('#StateId').append(`<option value=${ele.StateId}>${ele.StateName}</option>`);
+                    });
+                }
+            });
+        });
+        $("#StateId").change(function () {
+            var stateId = $(this).val();
+            debugger
+            $.ajax({
+                method: 'GET',
+                url: "/Student/GetCityByStateId/" + stateId,
+                success: function (response) {
+                    $("#CityId").empty();
+                    $("#CityId").html("<option value='-1'> -- Select City -- </option>");
+                    var data = JSON.parse(response);
+                    data.forEach(ele => {
+                        console.log(ele);
+                        $('#CityId').append(`<option value=${ele.CityId}>${ele.CityName}</option>`);
+                    });
+                }
+            });
+        });
+
+    })
+</script>

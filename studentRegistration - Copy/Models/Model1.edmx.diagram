@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="38970a649302487ab345f8fb0d92571a" Name="Diagram1">
+        <EntityTypeShape EntityType="db_RajVamjaModel.User" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="db_RajVamjaModel.City" Width="1.5" PointX="7.25" PointY="3.875" />
+        <EntityTypeShape EntityType="db_RajVamjaModel.Country" Width="1.5" PointX="4.25" PointY="0.5" />
+        <EntityTypeShape EntityType="db_RajVamjaModel.State" Width="1.5" PointX="5.75" PointY="1.875" />
+        <AssociationConnector Association="db_RajVamjaModel.FK__Cities__sId__47DBAE45" />
+        <AssociationConnector Association="db_RajVamjaModel.FK__States__cId__46E78A0C" />
+        <EntityTypeShape EntityType="db_RajVamjaModel.student" Width="1.5" PointX="3.25" PointY="3" />
+        <AssociationConnector Association="db_RajVamjaModel.FK__students__city__4E88ABD4" />
+        <AssociationConnector Association="db_RajVamjaModel.FK__students__countr__5070F446" />
+        <AssociationConnector Association="db_RajVamjaModel.FK__students__state__4F7CD00D" />
+        <AssociationConnector Association="db_RajVamjaModel.FK_Cities_Countries" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
