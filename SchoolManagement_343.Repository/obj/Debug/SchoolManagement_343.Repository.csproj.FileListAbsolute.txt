@@ -1,0 +1,17 @@
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Repository\bin\Debug\SchoolManagement_343.Repository.dll
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Repository\bin\Debug\SchoolManagement_343.Repository.pdb
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Repository\obj\Debug\SchoolManagement_343.Repository.csproj.AssemblyReference.cache
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Repository\obj\Debug\SchoolManagement_343.Repository.csproj.CoreCompileInputs.cache
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Repository\obj\Debug\SchoolManagement_343.Repository.dll
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Repository\obj\Debug\SchoolManagement_343.Repository.pdb
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Repository\bin\Debug\SchoolManagement_343.Repository.dll.config
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Repository\bin\Debug\EntityFramework.dll
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Repository\bin\Debug\SchoolManagement_343.Models.dll
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Repository\bin\Debug\SchoolManagement_343.Models.pdb
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Repository\bin\Debug\SchoolManagement_343.Models.dll.config
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Repository\bin\Debug\EntityFramework.xml
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Repository\obj\Debug\SchoolManagement_343.Repository.csproj.CopyComplete
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Repository\bin\Debug\SchoolManagement_343.Helpers.dll
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Repository\bin\Debug\SchoolManagement_343.Helpers.pdb
