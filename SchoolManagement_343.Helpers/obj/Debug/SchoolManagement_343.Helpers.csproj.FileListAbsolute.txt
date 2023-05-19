@@ -1,0 +1,12 @@
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Helpers\bin\Debug\SchoolManagement_343.Helpers.dll
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Helpers\bin\Debug\SchoolManagement_343.Helpers.pdb
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Helpers\obj\Debug\SchoolManagement_343.Helpers.csproj.CoreCompileInputs.cache
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Helpers\obj\Debug\SchoolManagement_343.Helpers.dll
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Helpers\obj\Debug\SchoolManagement_343.Helpers.pdb
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Helpers\obj\Debug\SchoolManagement_343.Helpers.csproj.AssemblyReference.cache
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Helpers\bin\Debug\SchoolManagement_343.Models.dll
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Helpers\bin\Debug\EntityFramework.dll
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Helpers\bin\Debug\SchoolManagement_343.Models.pdb
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Helpers\bin\Debug\SchoolManagement_343.Models.dll.config
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Helpers\bin\Debug\EntityFramework.xml
+C:\Users\sit327\Downloads\ASP.NET\SchoolManagement_343.Helpers\obj\Debug\SchoolManagement_343.Helpers.csproj.CopyComplete
