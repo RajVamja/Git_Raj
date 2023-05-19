@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RajVamja_schoolmanagement_343Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="uId" />
+    </Key>
+    <Property Name="uId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="passWord" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="RajVamja_schoolmanagement_343Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Cities" EntityType="RajVamja_schoolmanagement_343Model.City" />
+    <EntitySet Name="Countries" EntityType="RajVamja_schoolmanagement_343Model.Country" />
+    <EntitySet Name="States" EntityType="RajVamja_schoolmanagement_343Model.State" />
+    <AssociationSet Name="FK__Cities__cId__34C8D9D1" Association="RajVamja_schoolmanagement_343Model.FK__Cities__cId__34C8D9D1">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cities__sId__33D4B598" Association="RajVamja_schoolmanagement_343Model.FK__Cities__sId__33D4B598">
+      <End Role="State" EntitySet="States" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK__States__cId__2E1BDC42" Association="RajVamja_schoolmanagement_343Model.FK__States__cId__2E1BDC42">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="State" EntitySet="States" />
+    </AssociationSet>
+    <FunctionImport Name="SP_subjectList" ReturnType="Collection(RajVamja_schoolmanagement_343Model.SP_subjectList_Result)" />
+    <EntitySet Name="Subjects" EntityType="RajVamja_schoolmanagement_343Model.Subject" />
+    <EntitySet Name="teachers" EntityType="RajVamja_schoolmanagement_343Model.teacher" />
+    <AssociationSet Name="FK__teacher__city__440B1D61" Association="RajVamja_schoolmanagement_343Model.FK__teacher__city__440B1D61">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="teacher" EntitySet="teachers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__teacher__country__45F365D3" Association="RajVamja_schoolmanagement_343Model.FK__teacher__country__45F365D3">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="teacher" EntitySet="teachers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__teacher__state__44FF419A" Association="RajVamja_schoolmanagement_343Model.FK__teacher__state__44FF419A">
+      <End Role="State" EntitySet="States" />
+      <End Role="teacher" EntitySet="teachers" />
+    </AssociationSet>
+    <EntitySet Name="students" EntityType="RajVamja_schoolmanagement_343Model.student" />
+    <AssociationSet Name="FK__students__city__48CFD27E" Association="RajVamja_schoolmanagement_343Model.FK__students__city__48CFD27E">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="student" EntitySet="students" />
+    </AssociationSet>
+    <AssociationSet Name="FK__students__countr__4AB81AF0" Association="RajVamja_schoolmanagement_343Model.FK__students__countr__4AB81AF0">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="student" EntitySet="students" />
+    </AssociationSet>
+    <AssociationSet Name="FK__students__state__49C3F6B7" Association="RajVamja_schoolmanagement_343Model.FK__students__state__49C3F6B7">
+      <End Role="State" EntitySet="States" />
+      <End Role="student" EntitySet="students" />
+    </AssociationSet>
+    <FunctionImport Name="SP_stateList" ReturnType="Collection(RajVamja_schoolmanagement_343Model.SP_stateList_Result2)" />
+    <FunctionImport Name="SP_cityList" ReturnType="Collection(RajVamja_schoolmanagement_343Model.SP_cityList_Result3)" />
+    <FunctionImport Name="sp_DeleteCity">
+      <Parameter Name="cityId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DeleteCountry">
+      <Parameter Name="countryId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DeleteState">
+      <Parameter Name="stateId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_DeleteStudent">
+      <Parameter Name="stdId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_studentsDetail" ReturnType="Collection(RajVamja_schoolmanagement_343Model.SP_studentsDetail_Result1)" />
+    <FunctionImport Name="SP_teachersDetail" ReturnType="Collection(RajVamja_schoolmanagement_343Model.SP_teachersDetail_Result1)" />
+  </EntityContainer>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="cityId" />
+    </Key>
+    <Property Name="cityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sId" Type="Int32" />
+    <Property Name="cId" Type="Int32" />
+    <NavigationProperty Name="Country" Relationship="RajVamja_schoolmanagement_343Model.FK__Cities__cId__34C8D9D1" FromRole="City" ToRole="Country" />
+    <NavigationProperty Name="State" Relationship="RajVamja_schoolmanagement_343Model.FK__Cities__sId__33D4B598" FromRole="City" ToRole="State" />
+    <NavigationProperty Name="teachers" Relationship="RajVamja_schoolmanagement_343Model.FK__teacher__city__440B1D61" FromRole="City" ToRole="teacher" />
+    <NavigationProperty Name="students" Relationship="RajVamja_schoolmanagement_343Model.FK__students__city__48CFD27E" FromRole="City" ToRole="student" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="cId" />
+    </Key>
+    <Property Name="cId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cities" Relationship="RajVamja_schoolmanagement_343Model.FK__Cities__cId__34C8D9D1" FromRole="Country" ToRole="City" />
+    <NavigationProperty Name="States" Relationship="RajVamja_schoolmanagement_343Model.FK__States__cId__2E1BDC42" FromRole="Country" ToRole="State" />
+    <NavigationProperty Name="teachers" Relationship="RajVamja_schoolmanagement_343Model.FK__teacher__country__45F365D3" FromRole="Country" ToRole="teacher" />
+    <NavigationProperty Name="students" Relationship="RajVamja_schoolmanagement_343Model.FK__students__countr__4AB81AF0" FromRole="Country" ToRole="student" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="sId" />
+    </Key>
+    <Property Name="sId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cId" Type="Int32" />
+    <NavigationProperty Name="Cities" Relationship="RajVamja_schoolmanagement_343Model.FK__Cities__sId__33D4B598" FromRole="State" ToRole="City" />
+    <NavigationProperty Name="Country" Relationship="RajVamja_schoolmanagement_343Model.FK__States__cId__2E1BDC42" FromRole="State" ToRole="Country" />
+    <NavigationProperty Name="teachers" Relationship="RajVamja_schoolmanagement_343Model.FK__teacher__state__44FF419A" FromRole="State" ToRole="teacher" />
+    <NavigationProperty Name="students" Relationship="RajVamja_schoolmanagement_343Model.FK__students__state__49C3F6B7" FromRole="State" ToRole="student" />
+  </EntityType>
+  <Association Name="FK__Cities__cId__34C8D9D1">
+    <End Type="RajVamja_schoolmanagement_343Model.Country" Role="Country" Multiplicity="0..1" />
+    <End Type="RajVamja_schoolmanagement_343Model.City" Role="City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="cId" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="cId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cities__sId__33D4B598">
+    <End Type="RajVamja_schoolmanagement_343Model.State" Role="State" Multiplicity="0..1" />
+    <End Type="RajVamja_schoolmanagement_343Model.City" Role="City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="sId" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="sId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__States__cId__2E1BDC42">
+    <End Type="RajVamja_schoolmanagement_343Model.Country" Role="Country" Multiplicity="0..1" />
+    <End Type="RajVamja_schoolmanagement_343Model.State" Role="State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="cId" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="cId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="SP_cityList_Result">
+    <Property Type="String" Name="cityName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="sName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_stateList_Result">
+    <Property Type="String" Name="cName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="sName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_cityList_Result1">
+    <Property Type="Int32" Name="cityId" Nullable="false" />
+    <Property Type="String" Name="cityName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="sName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_stateList_Result1">
+    <Property Type="Int32" Name="sId" Nullable="false" />
+    <Property Type="String" Name="sName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_subjectList_Result">
+    <Property Type="Int32" Name="subId" Nullable="false" />
+    <Property Type="String" Name="subName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="subId" />
+    </Key>
+    <Property Name="subId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="subName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="teacher">
+    <Key>
+      <PropertyRef Name="tId" />
+    </Key>
+    <Property Name="tId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="tPhone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="tEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="aAddress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="subjects" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="Int32" Nullable="false" />
+    <Property Name="state" Type="Int32" Nullable="false" />
+    <Property Name="country" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="City1" Relationship="RajVamja_schoolmanagement_343Model.FK__teacher__city__440B1D61" FromRole="teacher" ToRole="City" />
+    <NavigationProperty Name="Country1" Relationship="RajVamja_schoolmanagement_343Model.FK__teacher__country__45F365D3" FromRole="teacher" ToRole="Country" />
+    <NavigationProperty Name="State1" Relationship="RajVamja_schoolmanagement_343Model.FK__teacher__state__44FF419A" FromRole="teacher" ToRole="State" />
+  </EntityType>
+  <Association Name="FK__teacher__city__440B1D61">
+    <End Type="RajVamja_schoolmanagement_343Model.City" Role="City" Multiplicity="1" />
+    <End Type="RajVamja_schoolmanagement_343Model.teacher" Role="teacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="cityId" />
+      </Principal>
+      <Dependent Role="teacher">
+        <PropertyRef Name="city" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__teacher__country__45F365D3">
+    <End Type="RajVamja_schoolmanagement_343Model.Country" Role="Country" Multiplicity="1" />
+    <End Type="RajVamja_schoolmanagement_343Model.teacher" Role="teacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="cId" />
+      </Principal>
+      <Dependent Role="teacher">
+        <PropertyRef Name="country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__teacher__state__44FF419A">
+    <End Type="RajVamja_schoolmanagement_343Model.State" Role="State" Multiplicity="1" />
+    <End Type="RajVamja_schoolmanagement_343Model.teacher" Role="teacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="sId" />
+      </Principal>
+      <Dependent Role="teacher">
+        <PropertyRef Name="state" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="student">
+    <Key>
+      <PropertyRef Name="stdId" />
+    </Key>
+    <Property Name="stdId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="sPhone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="sEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="sAddress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="teacher" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="Int32" Nullable="false" />
+    <Property Name="state" Type="Int32" Nullable="false" />
+    <Property Name="country" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="City1" Relationship="RajVamja_schoolmanagement_343Model.FK__students__city__48CFD27E" FromRole="student" ToRole="City" />
+    <NavigationProperty Name="Country1" Relationship="RajVamja_schoolmanagement_343Model.FK__students__countr__4AB81AF0" FromRole="student" ToRole="Country" />
+    <NavigationProperty Name="State1" Relationship="RajVamja_schoolmanagement_343Model.FK__students__state__49C3F6B7" FromRole="student" ToRole="State" />
+    <Property Name="studentType" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__students__city__48CFD27E">
+    <End Type="RajVamja_schoolmanagement_343Model.City" Role="City" Multiplicity="1" />
+    <End Type="RajVamja_schoolmanagement_343Model.student" Role="student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="cityId" />
+      </Principal>
+      <Dependent Role="student">
+        <PropertyRef Name="city" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__students__countr__4AB81AF0">
+    <End Type="RajVamja_schoolmanagement_343Model.Country" Role="Country" Multiplicity="1" />
+    <End Type="RajVamja_schoolmanagement_343Model.student" Role="student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="cId" />
+      </Principal>
+      <Dependent Role="student">
+        <PropertyRef Name="country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__students__state__49C3F6B7">
+    <End Type="RajVamja_schoolmanagement_343Model.State" Role="State" Multiplicity="1" />
+    <End Type="RajVamja_schoolmanagement_343Model.student" Role="student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="sId" />
+      </Principal>
+      <Dependent Role="student">
+        <PropertyRef Name="state" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="SP_studentsDetail_Result">
+    <Property Type="Int32" Name="stdId" Nullable="false" />
+    <Property Type="String" Name="Student_Name" Nullable="false" MaxLength="101" />
+    <Property Type="DateTime" Name="DOB" Nullable="false" />
+    <Property Type="String" Name="sPhone" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="sEmail" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="sAddress" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="teacher" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="cityName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="sName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_teachersDetail_Result">
+    <Property Type="Int32" Name="tId" Nullable="false" />
+    <Property Type="String" Name="Teacher_Name" Nullable="false" MaxLength="101" />
+    <Property Type="DateTime" Name="DOB" Nullable="false" />
+    <Property Type="String" Name="tPhone" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="tEmail" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="aAddress" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="subjects" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="cityName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="sName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_cityList_Result2">
+    <Property Type="Int32" Name="cityId" Nullable="false" />
+    <Property Type="String" Name="cityName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="sName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="cId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_stateList_Result2">
+    <Property Type="Int32" Name="sId" Nullable="false" />
+    <Property Type="String" Name="sName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="cId" Nullable="false" />
+    <Property Type="String" Name="cName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_cityList_Result3">
+    <Property Type="Int32" Name="cityId" Nullable="false" />
+    <Property Type="String" Name="cityName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="sName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="cName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="cId" Nullable="true" />
+    <Property Type="Int32" Name="sId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_studentsDetail_Result1">
+    <Property Type="Int32" Name="stdId" Nullable="false" />
+    <Property Type="String" Name="Student_Name" Nullable="false" MaxLength="101" />
+    <Property Type="DateTime" Name="DOB" Nullable="false" />
+    <Property Type="String" Name="sPhone" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="sEmail" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="sAddress" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="teacher" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="cityId" Nullable="false" />
+    <Property Type="String" Name="cityName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sId" Nullable="false" />
+    <Property Type="String" Name="sName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="cId" Nullable="false" />
+    <Property Type="String" Name="cName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Student_Type" Nullable="false" MaxLength="11" />
+  </ComplexType>
+  <ComplexType Name="SP_teachersDetail_Result1">
+    <Property Type="Int32" Name="tId" Nullable="false" />
+    <Property Type="String" Name="Teacher_Name" Nullable="false" MaxLength="101" />
+    <Property Type="DateTime" Name="DOB" Nullable="false" />
+    <Property Type="String" Name="tPhone" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="tEmail" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Gender" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="aAddress" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="subjects" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="cityId" Nullable="false" />
+    <Property Type="String" Name="cityName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sId" Nullable="false" />
+    <Property Type="String" Name="sName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="cId" Nullable="false" />
+    <Property Type="String" Name="cName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

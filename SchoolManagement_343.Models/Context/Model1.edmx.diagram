@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="af0d694d65f243aab45f3fd657ee7569" Name="Diagram1">
+        <EntityTypeShape EntityType="RajVamja_schoolmanagement_343Model.User" Width="1.5" PointX="1.625" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RajVamja_schoolmanagement_343Model.City" Width="1.5" PointX="7.125" PointY="4.25" />
+        <EntityTypeShape EntityType="RajVamja_schoolmanagement_343Model.Country" Width="1.5" PointX="3.375" PointY="0.5" />
+        <EntityTypeShape EntityType="RajVamja_schoolmanagement_343Model.State" Width="1.5" PointX="5.25" PointY="2.25" />
+        <AssociationConnector Association="RajVamja_schoolmanagement_343Model.FK__Cities__cId__34C8D9D1" />
+        <AssociationConnector Association="RajVamja_schoolmanagement_343Model.FK__Cities__sId__33D4B598" />
+        <AssociationConnector Association="RajVamja_schoolmanagement_343Model.FK__States__cId__2E1BDC42" />
+        <EntityTypeShape EntityType="RajVamja_schoolmanagement_343Model.Subject" Width="1.5" PointX="12.125" PointY="0.5" />
+        <EntityTypeShape EntityType="RajVamja_schoolmanagement_343Model.teacher" Width="1.5" PointX="9.75" PointY="1.625" />
+        <AssociationConnector Association="RajVamja_schoolmanagement_343Model.FK__teacher__city__440B1D61" />
+        <AssociationConnector Association="RajVamja_schoolmanagement_343Model.FK__teacher__country__45F365D3" />
+        <AssociationConnector Association="RajVamja_schoolmanagement_343Model.FK__teacher__state__44FF419A" />
+        <EntityTypeShape EntityType="RajVamja_schoolmanagement_343Model.student" Width="1.5" PointX="1.625" PointY="3" />
+        <AssociationConnector Association="RajVamja_schoolmanagement_343Model.FK__students__city__48CFD27E" />
+        <AssociationConnector Association="RajVamja_schoolmanagement_343Model.FK__students__countr__4AB81AF0" />
+        <AssociationConnector Association="RajVamja_schoolmanagement_343Model.FK__students__state__49C3F6B7" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
