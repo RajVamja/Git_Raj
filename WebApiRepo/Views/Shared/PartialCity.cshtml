@@ -1,0 +1,13 @@
+﻿
+@model WebApiRepo_Models.Context.City
+
+<option value="">Please Select City</option>
+
+@if (ViewBag.Citylist != null)
+{
+    foreach (var i in ViewBag.Citylist)
+    {
+        <option value="@i.Value">@i.Text</option>
+    }
+}
+

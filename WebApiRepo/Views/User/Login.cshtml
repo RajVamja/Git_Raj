@@ -1,0 +1,58 @@
+﻿@model WebApiRepo_Models.Model.CustomUserModel
+
+@{
+    Layout = null;
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+<div class="container">
+
+    <div style="margin-left: 94px">
+        <h5 class="indigo-text" style="margin-left: 94px">Please, login into your account</h5>
+        <div class="row">
+            <div class='col-sm-7'>
+                @using (Html.BeginForm("Login", "User", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="">
+                        <center>
+                            <div class='row'>
+                                <label style='color: #e91e63; font-size: 15px'>@ViewBag.notify</label>
+                            </div>
+                        </center>
+
+                        @Html.HiddenFor(model => model.uId)
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                @Html.LabelFor(model => model.userName, htmlAttributes: new { @class = "" })
+                                @Html.EditorFor(model => model.userName, new { htmlAttributes = new { @class = "" } })
+                                @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                @Html.LabelFor(model => model.passWord, htmlAttributes: new { @class = "" })
+                                @Html.EditorFor(model => model.passWord, new { htmlAttributes = new { @class = "" } })
+                                @Html.ValidationMessageFor(model => model.passWord, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        @Html.HiddenFor(model => model.fName)
+                        @Html.HiddenFor(model => model.lName)
+
+                    </div>
+                    <div>
+                        <button type='submit' name='btn_login'>Login</button>
+                    </div>
+                }
+                <span>Don't have an account? </span><a href="@Url.Action("Signup", "User")" style="color: #e91e63">Sign up here</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,73 @@
+﻿@model PagedList<WebApiRepo_Models.Context.SP_cityList_Result>
+
+@{
+    ViewBag.Title = "CityIndex";
+}
+
+<link href="~/Content/paginationcss.css" rel="stylesheet" />
+@using PagedList.Mvc;
+@using PagedList;
+
+<h2>CityIndex</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddCity")
+</p>
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                Sr. No.
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                State
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    @*@{ int i = 1; }*@
+    @{
+        int Index = (Model.PageNumber - 1) * Model.PageSize + 1;
+        int i = Index;
+    }
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    @i
+                </td>
+                <td>
+                    @item.cityName
+                </td>
+                <td>
+                    @item.sName
+                </td>
+                <td>
+                    @item.cName
+                </td>
+                <td>
+                    <div style="display: flex">
+                        <a class='fas fa-edit' style='font-size:24px; color: goldenrod; margin-right: 2px' href="@Url.Action("EditCity", "City", new {cityId = item.cityId, cId = item.cId})"></a> |
+                        <a class='fas fa-trash' style='font-size:24px; color: indianred;  margin-left: 2px' href="@Url.Action("DeleteCity", "City", new {cityId = item.cityId})" onclick="return confirm('Are you sure you want to delete this city?');"></a> |
+                        <a class='fas fa-info-circle' style='font-size:24px; color: deepskyblue;  margin-left: 2px' href="@Url.Action("City", "City", new {cityId = item.cityId})"></a>
+                    </div>
+                </td>
+
+            </tr>
+        </tbody>
+        i++;
+    }
+
+</table>
+
+<div class="pagination-container"> @Html.PagedListPager(Model, pCity => Url.Action("CityIndex", "City", new { pCity, search = Request.QueryString["search"] }))</div>
+

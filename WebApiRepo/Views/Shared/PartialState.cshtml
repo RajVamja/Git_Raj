@@ -1,0 +1,12 @@
+﻿@model WebApiRepo_Models.Context.State
+
+<option value="">Please Select State</option>
+
+@if (ViewBag.Slist != null)
+{
+    foreach (var i in ViewBag.Slist)
+    {
+        <option value="@i.Value">@i.Text</option>
+    }
+}
+
