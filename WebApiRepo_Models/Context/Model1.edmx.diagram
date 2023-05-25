@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2c4e1254aa0243159f596adc8d1645f8" Name="Diagram1">
+        <EntityTypeShape EntityType="RajVamja_webapiModel.City" Width="1.5" PointX="7.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RajVamja_webapiModel.Country" Width="1.5" PointX="3.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RajVamja_webapiModel.State" Width="1.5" PointX="5.375" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="RajVamja_webapiModel.FK__Cities__cId__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="RajVamja_webapiModel.FK__Cities__sId__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="RajVamja_webapiModel.FK__States__cId__267ABA7A" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RajVamja_webapiModel.Subject" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RajVamja_webapiModel.teacher" Width="1.5" PointX="12.125" PointY="0.5" />
+        <AssociationConnector Association="RajVamja_webapiModel.FK__teacher__city__49C3F6B7" />
+        <AssociationConnector Association="RajVamja_webapiModel.FK__teacher__country__4BAC3F29" />
+        <AssociationConnector Association="RajVamja_webapiModel.FK__teacher__state__4AB81AF0" />
+        <EntityTypeShape EntityType="RajVamja_webapiModel.student" Width="1.5" PointX="10.125" PointY="0.875" />
+        <AssociationConnector Association="RajVamja_webapiModel.FK__students__city__5629CD9C" />
+        <AssociationConnector Association="RajVamja_webapiModel.FK__students__countr__5812160E" />
+        <AssociationConnector Association="RajVamja_webapiModel.FK__students__state__571DF1D5" />
+        <EntityTypeShape EntityType="RajVamja_webapiModel.User" Width="1.5" PointX="0.75" PointY="2.375" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

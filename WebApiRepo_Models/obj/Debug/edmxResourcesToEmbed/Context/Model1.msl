@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RajVamja_webapiModelStoreContainer" CdmEntityContainer="RajVamja_webapiEntities">
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="RajVamja_webapiModel.City">
+        <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="cityId" ColumnName="cityId" />
+          <ScalarProperty Name="cityName" ColumnName="cityName" />
+          <ScalarProperty Name="sId" ColumnName="sId" />
+          <ScalarProperty Name="cId" ColumnName="cId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="RajVamja_webapiModel.Country">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="cId" ColumnName="cId" />
+          <ScalarProperty Name="cName" ColumnName="cName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="RajVamja_webapiModel.State">
+        <MappingFragment StoreEntitySet="States">
+          <ScalarProperty Name="sId" ColumnName="sId" />
+          <ScalarProperty Name="sName" ColumnName="sName" />
+          <ScalarProperty Name="cId" ColumnName="cId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_cityList" FunctionName="RajVamja_webapiModel.Store.SP_cityList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RajVamja_webapiModel.SP_cityList_Result">
+          <ScalarProperty Name="cityId" ColumnName="cityId" />
+          <ScalarProperty Name="cityName" ColumnName="cityName" />
+          <ScalarProperty Name="sName" ColumnName="sName" />
+          <ScalarProperty Name="cName" ColumnName="cName" />
+          <ScalarProperty Name="cId" ColumnName="cId" />
+          <ScalarProperty Name="sId" ColumnName="sId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_stateList" FunctionName="RajVamja_webapiModel.Store.SP_stateList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RajVamja_webapiModel.SP_stateList_Result">
+          <ScalarProperty Name="sId" ColumnName="sId" />
+          <ScalarProperty Name="sName" ColumnName="sName" />
+          <ScalarProperty Name="cId" ColumnName="cId" />
+          <ScalarProperty Name="cName" ColumnName="cName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="RajVamja_webapiModel.Subject">
+        <MappingFragment StoreEntitySet="Subject">
+          <ScalarProperty Name="subName" ColumnName="subName" />
+          <ScalarProperty Name="subId" ColumnName="subId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="teachers">
+      <EntityTypeMapping TypeName="RajVamja_webapiModel.teacher">
+        <MappingFragment StoreEntitySet="teacher">
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="subjects" ColumnName="subjects" />
+          <ScalarProperty Name="aAddress" ColumnName="aAddress" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="tEmail" ColumnName="tEmail" />
+          <ScalarProperty Name="tPhone" ColumnName="tPhone" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="lName" ColumnName="lName" />
+          <ScalarProperty Name="fName" ColumnName="fName" />
+          <ScalarProperty Name="tId" ColumnName="tId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="students">
+      <EntityTypeMapping TypeName="RajVamja_webapiModel.student">
+        <MappingFragment StoreEntitySet="students">
+          <ScalarProperty Name="studentType" ColumnName="studentType" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="teacher" ColumnName="teacher" />
+          <ScalarProperty Name="sAddress" ColumnName="sAddress" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="sEmail" ColumnName="sEmail" />
+          <ScalarProperty Name="sPhone" ColumnName="sPhone" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="lName" ColumnName="lName" />
+          <ScalarProperty Name="fName" ColumnName="fName" />
+          <ScalarProperty Name="stdId" ColumnName="stdId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_studentsDetail" FunctionName="RajVamja_webapiModel.Store.SP_studentsDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RajVamja_webapiModel.SP_studentsDetail_Result">
+          <ScalarProperty Name="stdId" ColumnName="stdId" />
+          <ScalarProperty Name="Student_Name" ColumnName="Student Name" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="sPhone" ColumnName="sPhone" />
+          <ScalarProperty Name="sEmail" ColumnName="sEmail" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="sAddress" ColumnName="sAddress" />
+          <ScalarProperty Name="teacher" ColumnName="teacher" />
+          <ScalarProperty Name="cityId" ColumnName="cityId" />
+          <ScalarProperty Name="cityName" ColumnName="cityName" />
+          <ScalarProperty Name="sId" ColumnName="sId" />
+          <ScalarProperty Name="sName" ColumnName="sName" />
+          <ScalarProperty Name="cId" ColumnName="cId" />
+          <ScalarProperty Name="cName" ColumnName="cName" />
+          <ScalarProperty Name="Student_Type" ColumnName="Student Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_teachersDetail" FunctionName="RajVamja_webapiModel.Store.SP_teachersDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="RajVamja_webapiModel.SP_teachersDetail_Result">
+          <ScalarProperty Name="tId" ColumnName="tId" />
+          <ScalarProperty Name="Teacher_Name" ColumnName="Teacher Name" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="tPhone" ColumnName="tPhone" />
+          <ScalarProperty Name="tEmail" ColumnName="tEmail" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="aAddress" ColumnName="aAddress" />
+          <ScalarProperty Name="subjects" ColumnName="subjects" />
+          <ScalarProperty Name="cityId" ColumnName="cityId" />
+          <ScalarProperty Name="cityName" ColumnName="cityName" />
+          <ScalarProperty Name="sId" ColumnName="sId" />
+          <ScalarProperty Name="sName" ColumnName="sName" />
+          <ScalarProperty Name="cId" ColumnName="cId" />
+          <ScalarProperty Name="cName" ColumnName="cName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_DeleteCity" FunctionName="RajVamja_webapiModel.Store.sp_DeleteCity" />
+    <FunctionImportMapping FunctionImportName="sp_DeleteStudent" FunctionName="RajVamja_webapiModel.Store.sp_DeleteStudent" />
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="RajVamja_webapiModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="passWord" ColumnName="passWord" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="lName" ColumnName="lName" />
+          <ScalarProperty Name="fName" ColumnName="fName" />
+          <ScalarProperty Name="uId" ColumnName="uId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
