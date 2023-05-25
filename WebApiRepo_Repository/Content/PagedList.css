@@ -1,0 +1,427 @@
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.pagination > li {
+  display: inline;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.428571429;
+  text-decoration: none;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+}
+
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  margin-left: 0;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+  background-color: #eeeeee;
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  z-index: 2;
+  color: #ffffff;
+  cursor: default;
+  background-color: #428bca;
+  border-color: #428bca;
+}
+
+.pagination > .disabled > span,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+  color: #999999;
+  cursor: not-allowed;
+  background-color: #ffffff;
+  border-color: #dddddd;
+}
+
+.pagination-lg > li > a,
+.pagination-lg > li > span {
+  padding: 10px 16px;
+  font-size: 18px;
+}
+
+.pagination-lg > li:first-child > a,
+.pagination-lg > li:first-child > span {
+  border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.pagination-lg > li:last-child > a,
+.pagination-lg > li:last-child > span {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.pagination-sm > li > a,
+.pagination-sm > li > span {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.pagination-sm > li:first-child > a,
+.pagination-sm > li:first-child > span {
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.pagination-sm > li:last-child > a,
+.pagination-sm > li:last-child > span {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.pager {
+  padding-left: 0;
+  margin: 20px 0;
+  text-align: center;
+  list-style: none;
+}
+
+.pager:before,
+.pager:after {
+  display: table;
+  content: " ";
+}
+
+.pager:after {
+  clear: both;
+}
+
+.pager:before,
+.pager:after {
+  display: table;
+  content: " ";
+}
+
+.pager:after {
+  clear: both;
+}
+
+.pager li {
+  display: inline;
+}
+
+.pager li > a,
+.pager li > span {
+  display: inline-block;
+  padding: 5px 14px;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 15px;
+}
+
+.pager li > a:hover,
+.pager li > a:focus {
+  text-decoration: none;
+  background-color: #eeeeee;
+}
+
+.pager .next > a,
+.pager .next > span {
+  float: right;
+}
+
+.pager .previous > a,
+.pager .previous > span {
+  float: left;
+}
+
+.pager .disabled > a,
+.pager .disabled > a:hover,
+.pager .disabled > a:focus,
+.pager .disabled > span {
+  color: #999999;
+  cursor: not-allowed;
+  background-color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*create database RajVamja_webapi
+use RajVamja_webapi
+
+
+create table Users( uId int identity(1,1) primary key, fName varchar(100) not null, lName varchar(100) not null, userName varchar(50) not null, passWord varchar(100) not null );
+
+select * from Users
+
+create table students( stdId int primary key identity(1,1), fName varchar(50) not null, lName varchar(50) not null, DOB date not null, sPhone varchar(20) not null, sEmail varchar(50) not null, Gender varchar(10) not null, sAddress varchar(255) not null, teacher varchar(100) not null, city int foreign key references Cities(cityId) not null, state int foreign key references States(sId) not null, country int foreign key references Countries(cId) not null, studentType int not null );
+
+
+
+insert into students
+values ('Raj', 'Vamja', '2001-08-24', '7878508479', 'vamjaraj40@gmail.com', 'Male', 'D-601, ShivPlaza, Surat', 1, 1, 1)
+
+
+
+-- Function for teachers name in student table --
+create or ALTER function func_Teacher(@std_id int)
+     RETURNS VARCHAR(100)
+     as
+     BEGIN
+        DECLARE @ANY VARCHAR(255)
+        SET @ANY = '';
+        SELECT  @ANY = @ANY  + (select fName from teacher where tId = value) + ',' FROM students as s
+    left join teacher as t on cast(t.tId as varchar(20)) =  s.teacher 
+    CROSS APPLY string_split(s.teacher, ',') WHERE s.stdId = @std_id;
+    RETURN @ANY
+     END
+
+select dbo.func_Teacher(2);
+
+
+-- Store procedure for teachers name in student table --
+
+create or alter proc SP_studentsDetail
+  as
+  BEGIN
+     SELECT stu.stdId, stu.fName + ' ' + stu.lName as 'Student Name', stu.DOB, stu.sPhone, stu.sEmail, stu.Gender, stu.sAddress, dbo.func_Teacher(stu.stdId) as 'teacher',
+ 
+     city.cityId, city.cityName, s.sId, s.sName, c.cId, c.cName,
+CASE stu.studentType
+WHEN 0 THEN 'Hosteller'
+WHEN 1 THEN 'Day-Scholar'
+ELSE 'Unknown'
+END AS 'Student Type'
+FROM students as stu
+     inner join Countries c on stu.country = c.cid
+     inner join States s on stu.state = s.sid
+     inner join Cities city on stu.city = city.cityId
+  end
+
+exec SP_studentsDetail
+
+-------------------------------------------------------------------------------------------------------------------------------------
+create table teacher( tId int primary key identity(1,1), fName varchar(50) not null, lName varchar(50) not null, DOB date not null, tPhone varchar(20) not null, tEmail varchar(50) not null, Gender varchar(10) not null, aAddress varchar(255) not null, subjects varchar(100) not null, city int foreign key references Cities(cityId) not null, state int foreign key references States(sId) not null, country int foreign key references Countries(cId) not null );
+
+
+create or ALTER function func_Subjects(@t_id int)
+     RETURNS VARCHAR(100)
+     as
+     BEGIN
+        DECLARE @ANY VARCHAR(255)
+        SET @ANY = '';
+        SELECT  @ANY = @ANY  + (select subName from Subject where subId = value) + ',' FROM teacher as t
+    left join Subject as sub on cast(sub.subId as varchar(20)) =  sub.subName 
+    CROSS APPLY string_split(t.subjects, ',') WHERE t.tId = @t_id;
+    RETURN @ANY
+     END
+
+select dbo.func_Subjects(4);
+
+
+
+-- Store procedure for subjects name in teacher table --
+
+create or alter proc SP_teachersDetail
+  as
+  BEGIN
+     SELECT t.tId, t.fName + ' ' + t.lName as 'Teacher Name', t.DOB, t.tPhone, t.tEmail, t.Gender, t.aAddress, dbo.func_Subjects(t.tId) as 'subjects',
+     city.cityId, city.cityName, s.sId, s.sName, c.cId, c.cName FROM teacher as t
+     inner join Countries c on t.country = c.cid
+     inner join States s on t.state = s.sid
+     inner join Cities city on t.city = city.cityId
+  end
+
+exec SP_teachersDetail
+
+-----------------------------------------------------------------------------------------------------------------------
+create table Countries( cId int primary key identity(1,1), cName varchar(50) );
+insert into Countries
+values('india'),
+('Canada'),
+('USA')
+
+
+create table States( sId int primary key identity(1,1), sName varchar(50), cId int foreign key references Countries(cId) );
+
+insert into States
+values('Gujarat', 1),
+('Maharastra', 1),
+('Karnataka', 1),
+('Alberta', 2),
+('Manitoba', 2),
+('Ontario', 2),
+('Alaska', 3),
+('California', 3),
+('Hawaii', 3)
+
+
+
+
+create table Cities( cityId int primary key identity(1,1), cityName varchar(50), sId int foreign key references States(sId), cId int foreign key references Countries(cId) );
+
+
+insert into Cities
+values ('Surat', 1,1),
+('Ahmedabad', 1,1),
+('Baroda', 1,1),
+('Rajkot', 1,1),
+('Mumbai', 2,1),
+('Pune', 2,1),
+('Nagpur', 2,1),
+('Nashik', 2,1),
+('Bangaluru', 3,1),
+('Bhadravati', 3,1),
+('Gulbarga', 3,1),
+('Mysore', 3,1),
+('Calgary',4,2),
+('Edmonton',4,2),
+('St. Albert',4,2),
+('Winnipeg', 5,2),
+('The Pas', 5,2),
+('Brandon', 5,2),
+('Ottawa', 6,2),
+('Hamilton', 6,2),
+('Toronto', 6,2),
+('Skagway', 7,3),
+('Talkeenta', 7,3),
+('Homer', 7,3),
+('Los Angeles',8,3),
+('San Francisco',8,3),
+('Oakland',8,3),
+('San Diego',8,3),
+('Pearl City', 9,3),
+('Ocean Pointe', 9,3),
+('Makawao', 9,3),
+('Maili', 9,3)
+
+select * from students
+
+
+create table Subject( subId int identity(1,1) primary key, subName varchar(50) not null );
+
+insert into Subject
+values('Web Development'),
+('Wireless Communication'),
+('Data Mining'),
+('Block Chain'),
+('SPM'),
+('Compiler Design'),
+('Computer Vision'),
+('Machine Learning'),
+('Agile Development')
+
+
+select * from students
+
+create or alter proc SP_StudentsDet
+as
+begin
+
+select stu.stdId, stu.fName, stu.lName, stu.DOB, stu.sPhone, stu.sEmail, stu.Gender, stu.sAddress, city.cityId, city.cityName, s.sId, s.sName, c.cId, c.cName from students as stu
+inner join Cities as city on stu.city = city.cityId
+inner join States as s on stu.state = s.sId
+inner join Countries as c on stu.country = c.cId
+
+end
+
+exec SP_StudentsDet
+
+CREATE or ALTER PROC sp_DeleteStudent(@stdId int)
+AS
+BEGIN
+begin
+DELETE FROM students WHERE stdId = @stdId
+end
+END
+
+create or alter proc SP_stateList
+as
+begin
+select s.sId, s.sName, c.cId, c.cName from States as s inner join Countries as c on s.cId = c.cId
+end
+
+exec SP_stateList
+
+
+
+create or alter proc SP_cityList
+as
+begin
+select city.cityId, city.cityName, s.sName, c.cName, city.cId, city.sId from Cities as city inner join Countries as c on city.cId = c.cId inner join States as s on s.sId = city.sId
+end
+
+exec SP_cityList
+
+
+
+CREATE or ALTER PROC sp_DeleteCity(@cityId int)
+AS
+BEGIN
+if not exists (select * from students where city = @cityId) and not exists (select * from teacher where city = @cityId)
+begin
+DELETE FROM Cities WHERE cityId = @cityId
+end
+END
+
+
+CREATE or ALTER PROC sp_DeleteState(@stateId int)
+AS
+BEGIN
+if not exists (select * from students where state = @stateId) and not exists (select * from teacher where state = @stateId)
+
+DELETE FROM Cities WHERE sId = @stateId
+DELETE FROM States WHERE sId = @stateId
+
+END
+
+
+CREATE or ALTER PROCEDURE sp_DeleteCountry( @countryId int)
+AS
+BEGIN
+if not exists (select * from students where country = @countryId) and not exists (select * from teacher where country = @countryId)
+
+DELETE FROM Cities WHERE sId IN (SELECT sId FROM States WHERE cId = @countryId)
+DELETE FROM States WHERE cId = @countryId
+DELETE FROM Countries WHERE cId = @countryId
+
+END
+
+CREATE or ALTER PROC sp_DeleteSubject(@subId int)
+AS
+BEGIN
+if not exists (select * from teacher where subjects like '%'+ convert(varchar(100),@subId) +'%')
+begin
+DELETE FROM Cities WHERE cityId = @subId
+end
+END*/
