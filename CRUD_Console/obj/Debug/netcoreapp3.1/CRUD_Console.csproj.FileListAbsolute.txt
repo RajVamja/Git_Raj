@@ -1,0 +1,16 @@
+C:\Users\sit327\Downloads\ASP.NET\CRUD_Console\bin\Debug\netcoreapp3.1\CRUD_Console.exe
+C:\Users\sit327\Downloads\ASP.NET\CRUD_Console\bin\Debug\netcoreapp3.1\CRUD_Console.deps.json
+C:\Users\sit327\Downloads\ASP.NET\CRUD_Console\bin\Debug\netcoreapp3.1\CRUD_Console.runtimeconfig.json
+C:\Users\sit327\Downloads\ASP.NET\CRUD_Console\bin\Debug\netcoreapp3.1\CRUD_Console.runtimeconfig.dev.json
+C:\Users\sit327\Downloads\ASP.NET\CRUD_Console\bin\Debug\netcoreapp3.1\CRUD_Console.dll
+C:\Users\sit327\Downloads\ASP.NET\CRUD_Console\bin\Debug\netcoreapp3.1\CRUD_Console.pdb
+C:\Users\sit327\Downloads\ASP.NET\CRUD_Console\obj\Debug\netcoreapp3.1\CRUD_Console.csproj.AssemblyReference.cache
+C:\Users\sit327\Downloads\ASP.NET\CRUD_Console\obj\Debug\netcoreapp3.1\CRUD_Console.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sit327\Downloads\ASP.NET\CRUD_Console\obj\Debug\netcoreapp3.1\CRUD_Console.AssemblyInfoInputs.cache
+C:\Users\sit327\Downloads\ASP.NET\CRUD_Console\obj\Debug\netcoreapp3.1\CRUD_Console.AssemblyInfo.cs
+C:\Users\sit327\Downloads\ASP.NET\CRUD_Console\obj\Debug\netcoreapp3.1\CRUD_Console.csproj.CoreCompileInputs.cache
+C:\Users\sit327\Downloads\ASP.NET\CRUD_Console\obj\Debug\netcoreapp3.1\CRUD_Console.dll
+C:\Users\sit327\Downloads\ASP.NET\CRUD_Console\obj\Debug\netcoreapp3.1\CRUD_Console.pdb
+C:\Users\sit327\Downloads\ASP.NET\CRUD_Console\obj\Debug\netcoreapp3.1\CRUD_Console.genruntimeconfig.cache
+C:\Users\sit327\Downloads\ASP.NET\CRUD_Console\bin\Debug\netcoreapp3.1\ConsoleTables.dll
+C:\Users\sit327\Downloads\ASP.NET\CRUD_Console\obj\Debug\netcoreapp3.1\CRUD_Console.csproj.CopyComplete
