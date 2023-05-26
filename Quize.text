@@ -1,0 +1,254 @@
+@{
+    Layout = "~/Views/Shared/DashboardAdmin.cshtml";
+}
+
+<!-- Main content -->
+<section class="content">
+    <!-- Button trigger modal -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="mt-4">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">--Start here--</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- Horizontal Form -->
+                <div class="card card-primary">
+
+                    <div id="summaryDiv"></div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+
+                                <div class="modal-header" style="background-color: #007bff7d">
+
+                                    <ul class="stepper nav nav-pills">
+                                        <li class="nav-item">
+                                            <a class="step nav-link"  data-toggle="pill"><div id="timer"></div></a>
+                                        </li>
+                                        
+                                        <li class="nav-item">
+                                            <a class="step nav-link active" id="step1" data-toggle="pill">Que-1</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="step nav-link" id="step2" data-toggle="pill">Que-2</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="step nav-link" id="step3" data-toggle="pill">Que-3</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="step nav-link" id="step4" data-toggle="pill">Que-4</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="step nav-link" id="step5" data-toggle="pill">Que-5</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+
+                                <div class="modal-body">
+                                    <div class="question" id="question1">
+                                        <h5>1. What is the purpose of routing in ASP.NET MVC?</h5>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions1" value="To map URLs to controller actions">
+                                            <label class="form-check-label">A. To map URLs to controller actions</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions1" value="To manage session state">
+                                            <label class="form-check-label">B. To manage session state</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions1" value="To authenticate users">
+                                            <label class="form-check-label">C. To authenticate users</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions1" value="To validate user input">
+                                            <label class="form-check-label">D.To validate user input</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="question" id="question2" style="display: none;">
+                                        <h5>2. Which of the following is not a valid way to pass data from a controller to a view in ASP.NET MVC?</h5>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions2" value="ViewBag">
+                                            <label class="form-check-label">A. ViewBag</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions2" value="ViewData">
+                                            <label class="form-check-label">B. ViewData</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions2" value="TempData">
+                                            <label class="form-check-label">C. TempData</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions2" value="HttpRequest">
+                                            <label class="form-check-label">D. HttpRequest</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="question" id="question3" style="display: none;">
+                                        <h5>3. What is the purpose of the @Html helper in ASP.NET MVC?</h5>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions3" value="To validate user input">
+                                            <label class="form-check-label">A. To validate user input</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions3" value="To create HTML elements">
+                                            <label class="form-check-label">B. To create HTML elements</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions3" value="To serialize data">
+                                            <label class="form-check-label">C. To serialize data</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions3" value="To manage session state">
+                                            <label class="form-check-label">D. To manage session state</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="question" id="question4" style="display: none;">
+                                        <h5>4. What is 'M' in MVC?</h5>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions4" value="Modal">
+                                            <label class="form-check-label">A. Modal</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions4" value="Model">
+                                            <label class="form-check-label">B. Model</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions4" value="Mortex">
+                                            <label class="form-check-label">C. Mortex</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions4" value="Mode">
+                                            <label class="form-check-label">D. Mode</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="question" id="question5" style="display: none;">
+                                        <h5>5. Which of the following is NOT a valid HTTP verb that can be used in an ASP.NET MVC controller action?</h5>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions5" value="GET">
+                                            <label class="form-check-label">A. GET</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions5" value="PUT">
+                                            <label class="form-check-label">B. PUT</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions5" value="POST">
+                                            <label class="form-check-label">C. POST</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions5" value="MODIFY">
+                                            <label class="form-check-label">D. MODIFY</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" id="saveChangesBtn">Next</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var currentQuestion = 1;
+        var totalQuestions = 5;
+        var quizDuration = 12; // Quiz duration in seconds (10 minutes)
+
+        // Function to show the next question
+        function showNextQuestion() {
+            $('#question' + currentQuestion).hide();
+
+            var selectedOption = $('input[name="inlineRadioOptions' + currentQuestion + '"]:checked').val();
+            localStorage.setItem('answer' + currentQuestion, selectedOption); // Store the selected answer in local storage
+
+            currentQuestion++;
+            if (currentQuestion <= totalQuestions) {
+                $('#question' + currentQuestion).show();
+                updateStepper();
+            } else {
+                showSummary();  // All questions answered, show summary
+                $('#exampleModalCenter').modal('hide');  // Close the modal after submitting the fifth question
+            }
+        }
+
+        // Function to show the summary of selected answers
+        function showSummary() {
+            var summaryContent = '<div class="d-flex justify-content-center mt-2"><h4><b>Summary of Selected Answers:</h4></b></div>';
+            for (var i = 1; i <= totalQuestions; i++) {
+                var answer = localStorage.getItem('answer' + i);
+                summaryContent += '<div class="mx-3 mt-2"><p>Ans ' + i + ': ' + answer + '</p></div>';
+            }
+
+            $('#summaryDiv').html(summaryContent);  // Display the summary in a div
+        }
+
+        // Function to add and remove active class in stepper
+        function updateStepper() {
+            $('.step').removeClass('active');
+            for (var i = currentQuestion; i <= currentQuestion; i++) {
+                $('#step' + i).addClass('active');
+            }
+        }
+
+        // Function to handle quiz timer
+        function startQuizTimer() {
+            var seconds = quizDuration;
+            var timerInterval = setInterval(function () {
+                seconds--;
+                $('#timer').text(seconds + 's');
+                if (seconds <= 0) {
+                    clearInterval(timerInterval);
+                    showSummary();  // Quiz time is up, show summary
+                    $('#exampleModalCenter').modal('hide');  // Close the modal
+                }
+            }, 1000);
+        }
+
+        // Event handler for the "Save changes" button
+        $('#saveChangesBtn').click(function () {
+            if (currentQuestion <= totalQuestions) {
+                showNextQuestion();
+            }
+            else {
+                showSummary();  // All questions answered, show summary
+            }
+        });
+
+        // Start the quiz timer
+        startQuizTimer();
+    });
+
+</script>
+
+
+
+
+
+
+
