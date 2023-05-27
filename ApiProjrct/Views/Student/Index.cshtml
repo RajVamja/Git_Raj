@@ -1,0 +1,108 @@
+﻿@*@model IEnumerable<ApiProjrct.Models.student>*@
+@model List<ApiProjrct.Models.SP_StudentsDet_Result>
+
+@{
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+<section class="home-section">
+    <nav>
+        <div class="sidebar-button">
+            <i class='bx bx-menu sidebarBtn'></i>
+            <span class="dashboard">Dashboard</span>
+        </div>
+        <span class="admin_name me-5" style="color: black"></span>
+    </nav>
+
+
+
+    <div class="home-content">
+        <div class="sales-boxes">
+            <div class="recent-sales box">
+                <div class="title">Students Details</div>
+                <div class="sales-details">
+
+                    <button type="button" style=" background-color: #0A2558" class="btn my-2"><a style="text-decoration: none; color: white" href="@Url.Action("CreateStudent", "student")">Create New</a></button>
+
+                    <div class="container table-responsive">
+                        <table id="dis" class="obd table mb-5">
+                            <thead>
+                                <tr id="hd">
+                                <tr>
+                                    <th>Sr No.</th>
+                                    <th>fName</th>
+                                    <th>lName</th>
+                                    <th>DOB</th>
+                                    <th>Contact</th>
+                                    <th>Email</th>
+                                    <th>Gender</th>
+                                    <th>Address</th>
+                                    <th>city</th>
+                                    <th>State</th>
+                                    <th>Country</th>
+                                    <th style="text-align: center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ int j = 1;}
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>@j</td>
+                                    <td>
+                                        @item.fName
+                                    </td>
+                                    <td>
+                                        @item.lName
+                                    </td>
+                                    <td>
+                                        @item.DOB.ToString("yyyy-MM-dd")
+                                    </td>
+                                    <td>
+                                        @item.sPhone
+                                    </td>
+                                    <td>
+                                        @item.sEmail
+                                    </td>
+                                    <td>
+                                        @item.Gender
+                                    </td>
+                                    <td>
+                                        @item.sAddress
+                                    </td>
+                                    <td>
+                                        @item.cityName
+                                    </td>
+                                    <td>
+                                        @item.sName
+                                    </td>
+                                    <td>
+                                        @item.cName
+                                    </td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <button type="button" class="btn btn-success mx-2"><a style="text-decoration: none; color: white" href="@Url.Action("EditStudent", "Student", new { stdId = item.stdId, sId = item.sId, cId = item.cId})">Edit</a></button> |
+                                            <button type="button" class="btn btn-warning mx-2"><a style="text-decoration: none; color: white" href="@Url.Action("StudentDetails", "Student", new { stdId = item.stdId, sId = item.sId, cId = item.cId })">Details</a></button> |
+                                            <button type="button" class="btn btn-danger ms-2"><a style="text-decoration: none; color: white" href="@Url.Action("DeleteStu", "Student", new { stdId = item.stdId, sId = item.sId, cId = item.cId  })">Delete</a></button>
+
+                                            @*<button type="button" class="btn btn-danger ms-2" onclick="return confirm('Are you sure you want to delete this record?');">
+                                                <a style="text-decoration: none; color: white" href="@Url.Action("DeleteStu", "Student", new { stdId = item.stdId })">Delete</a>
+                                            </button>*@
+
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                    j++;
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>

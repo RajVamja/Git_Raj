@@ -1,0 +1,181 @@
+﻿@model ApiProjrct.Models.student
+@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/Dashboard.cshtml";
+}
+
+
+
+<section class="home-section">
+    <nav>
+        <div class="sidebar-button">
+            <i class='bx bx-menu sidebarBtn'></i>
+            <span class="dashboard">Dashboard</span>
+        </div>
+        <span class="admin_name" style="color: black">Welcome back @Session["Name"]</span>
+
+
+    </nav>
+
+
+
+    <div class="home-content">
+        <div class="sales-boxes">
+            <div class="recent-sales box" style="background-color: #0a25584a">
+                <div class="sales-details">
+
+                    <div class="container">
+                        <div class="z-depth-1 grey lighten-4 row" style="padding: 32px 16px 0px 0px; border: 1px solid #EEE;">
+                            <div class="title mb-4">Edit Details for student Id: @Model.stdId</div>
+                            <div class="d-flex justify-content-center mb-4">
+                                <img src="~/Content/3d-casual.png" / style="height: 120px">
+                            </div>
+                            <div class="row">
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+
+
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.stdId)
+
+                                    <div class="row">
+                                        <div class="input-field col-sm-6">
+                                            @Html.LabelFor(model => model.fName, htmlAttributes: new { @class = "" })
+                                            @Html.EditorFor(model => model.fName, new { htmlAttributes = new { @class = " " } })
+                                            @Html.ValidationMessageFor(model => model.fName, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="input-field col-sm-6">
+                                            @Html.LabelFor(model => model.lName, htmlAttributes: new { @class = "" })
+                                            @Html.EditorFor(model => model.lName, new { htmlAttributes = new { @class = "" } })
+                                            @Html.ValidationMessageFor(model => model.lName, "", new { @class = "text-danger" })
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="input-field col-sm-12">
+                                            @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                                            @Html.ValidationMessageFor(model => @model.DOB, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="input-field col-sm-12">
+                                            @Html.LabelFor(model => model.sPhone, htmlAttributes: new { @class = "" })
+                                            @Html.EditorFor(model => model.sPhone, new { htmlAttributes = new { @class = "" } })
+                                            @Html.ValidationMessageFor(model => model.sPhone, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="input-field col-sm-12">
+                                            @Html.LabelFor(model => model.sEmail, htmlAttributes: new { @class = "" })
+                                            @Html.EditorFor(model => model.sEmail, new { htmlAttributes = new { @class = "" } })
+                                            @Html.ValidationMessageFor(model => model.sEmail, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="d-flex">
+                                            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "" })
+
+                                            <div class="col-sm-3 ms-4">
+                                                @Html.RadioButtonFor(m => m.Gender, "Male")Male
+                                            </div>
+                                            <div class="col-sm-3">
+                                                @Html.RadioButtonFor(m => m.Gender, "Female")Female
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="input-field col-sm-12 mt-3">
+                                            @Html.LabelFor(model => model.sAddress, htmlAttributes: new { @class = "" })
+                                            @Html.EditorFor(model => model.sAddress, new { htmlAttributes = new { @class = "" } })
+                                            @Html.ValidationMessageFor(model => model.sAddress, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        @Html.LabelFor(model => model.country, htmlAttributes: new { @class = "" })
+
+                                        <div class="input-field col-sm-4 mt-3">
+                                            @Html.DropDownListFor(a => a.country, ViewBag.CountryList as SelectList, "Select Country", new { @class = "form-control", @id = "cId" })
+                                            @Html.ValidationMessageFor(model => model.country, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="input-field col-sm-4 mt-3">
+                                            @Html.DropDownListFor(a => a.state, ViewBag.StateList as SelectList, "Select State", new { @class = "form-control", @id = "sId" })
+                                            @Html.ValidationMessageFor(model => model.state, "", new { @class = "text-danger" })
+                                        </div>
+
+                                        <div class="input-field col-sm-4 mt-3">
+                                            @Html.DropDownListFor(a => a.city, ViewBag.CityList as SelectList, "Select City", new { @class = "form-control", @id = "cityId" })
+                                            @Html.ValidationMessageFor(model => model.city, "", new { @class = "text-danger" })
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="d-flex justify-content-center">
+                                            <input type="submit" style="background-color: #dfaf69" value="Update" class="btn btn-default" />
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#cId").change(function () {
+            var countryId = $(this).val();
+            $.ajax({
+                type: "post",
+                url: "/countries/GetStateList?cId=" + countryId,
+                contentType: "html",
+                success: function (response) {
+                    $("#sId").empty();
+                    $("#sId").append(response);
+                }
+            })
+        })
+
+        $("#sId").change(function () {
+            var stateId = $(this).val();
+            $.ajax({
+                type: "post",
+                url: "/countries/GetCityList?sId=" + stateId,
+                contentType: "html",
+                success: function (res) {
+                    $("#cityId").empty();
+                    $("#cityId").append(res);
+                }
+            })
+        })
+
+        var date = new Date('@Model.DOB');
+        var utcDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+        var localDate = new Date(utcDate.toLocaleString());
+        $("#DOB").val(localDate.toISOString().split('T')[0]);
+
+    })
+
+
+</script>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
